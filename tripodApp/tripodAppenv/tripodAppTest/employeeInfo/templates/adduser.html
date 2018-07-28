@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container" style="padding-top: 100px;">
+  		<div class="row">
+  			<div class="col-md-3"></div>
+  			<div class="col-md-6">
+  				{% if messages %}
+
+	  				{% for message in messages %}
+						<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+		  			{% endfor %}
+
+		  		{% endif %}
+
+  				<form class="form-signin" 
+  				action="{% url 'employee:add_user' %}" method="POST">
+  					{% csrf_token %}
+			      <div class="text-center mb-4">
+			        <h1 class="h3 mb-3 font-weight-normal">User Information</h1>
+			        </a></p>
+			      </div>
+
+			      <div class="form-label-group">
+			      	<label for="name"></label>
+			        {{form.name}}		        
+			      </div>
+
+			       <div class="form-label-group">
+			       	<label for="email"></label>
+			        {{form.email}}		        
+			      </div>
+
+			      <div class="form-label-group">
+			      	<label for=""></label>
+			      	<input type="hidden" name="bot_catcher" id="bot_catcher" value="">   
+			      </div>
+
+			      <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+		    	 </form>
+  			   </div>
+  			<div class="col-md-3"></div>
+		</div>
+	</div>
+{% endblock content %}
